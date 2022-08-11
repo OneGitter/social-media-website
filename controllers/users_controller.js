@@ -4,6 +4,16 @@ module.exports.profile = function (req,res) {
     });
 }
 
-module.exports.home = function (req,res) {
-    res.end('<h1>user</h1>');
+// render the sign up page
+module.exports.signUp = function (req,res) {
+    return res.render('user_sign_up', {
+        title: "Code'nChat | Sign Up"
+    })
+}
+
+// render the sign in page
+module.exports.signIn = function (req,res) {
+    return res.render('user_sign_in', {
+        title: "Code'nChat | Sign In"
+    })
 }
