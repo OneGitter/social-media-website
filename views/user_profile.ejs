@@ -2,3 +2,10 @@
         <h1>
             Code'n Chat Profile
         </h1>
+
+        <p>Name:<%= user.name %> </p>
+        <p>Email:<%= user.email %> </p>
+
+        <form action="/users/log-out" method="post">
+            <button type="submit">Log Out</button>
+        </form>
