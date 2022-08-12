@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1186f0;
+  color: white;
+  font-size: large;
+}
+
+header div {
+  padding-top: 1%;
+  font-size: larger;
+  font-weight: bold;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline-block;
+  font-size: larger;
+  padding-top: 2%;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: white;
+}

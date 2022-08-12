@@ -1,0 +1,27 @@
+footer {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #747474;
+  color: white;
+  font-size: large;
+}
+
+footer div {
+  padding-top: 1%;
+  font-size: larger;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+footer ul li {
+  display: inline-block;
+  font-size: larger;
+  padding-top: 2%;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: white;
+}

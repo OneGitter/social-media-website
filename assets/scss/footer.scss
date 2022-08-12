@@ -1,0 +1,23 @@
+footer{
+    display: flex;
+    justify-content: flex-start;
+    background-color: #747474;
+    color: white;
+    font-size: large;
+    div{
+        padding-top: 1%;
+        font-size: larger;  
+    }
+    ul{
+        list-style-type: none; 
+        li{
+          display: inline-block;
+          font-size: larger;
+          padding-top: 2%;
+          a{
+            text-decoration: none;
+            color: white;
+          }
+        }
+    }
+}
