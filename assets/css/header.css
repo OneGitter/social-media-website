@@ -7,9 +7,18 @@ header {
 }
 
 header div {
-  padding-top: 1%;
-  font-size: larger;
+  margin-top: 17px;
+  font-size: x-large;
   font-weight: bold;
+}
+
+header div :hover {
+  color: darkblue;
+}
+
+header div a {
+  text-decoration: none;
+  color: white;
 }
 
 header ul {
@@ -19,7 +28,12 @@ header ul {
 header ul li {
   display: inline-block;
   font-size: larger;
-  padding-top: 2%;
+  padding-top: 2px;
+  margin-right: 5px;
+}
+
+header ul li :hover {
+  color: darkblue;
 }
 
 header ul li a {

@@ -7,8 +7,9 @@ footer {
 }
 
 footer div {
-  padding-top: 1%;
+  padding-top: 2%;
   font-size: larger;
+  margin-right: -20px;
 }
 
 footer ul {
@@ -18,7 +19,13 @@ footer ul {
 footer ul li {
   display: inline-block;
   font-size: larger;
-  padding-top: 2%;
+  padding-top: 1%;
+  margin-top: -3px;
+  margin-right: 10px;
+}
+
+footer ul li :hover {
+  color: darkblue;
 }
 
 footer ul li a {
