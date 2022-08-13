@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const User = require('../models/user');
 
 module.exports.home = function (req,res) {
 
@@ -15,9 +16,14 @@ module.exports.home = function (req,res) {
             console.log(`${err} while fetching posts`);
             return;
         }
-        return res.render('home', {
-            title: "Code'n Chat",
-            posts: posts
-        });
+        User.find({},function (err,user) {
+
+            return res.render('home', {
+                title: "Code'n Chat",
+                posts: posts,
+                all_users: user
+            });
+        })
+
     })
 }
