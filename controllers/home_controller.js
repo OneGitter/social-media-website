@@ -2,28 +2,27 @@ const Post = require('../models/post');
 const Comment = require('../models/comment');
 const User = require('../models/user');
 
-module.exports.home = function (req,res) {
+module.exports.home = async function (req,res) {
 
-    Post.find({})
-    .populate('user')
-    .populate({path: 'comments',
-        populate: {
-            path: 'user'
-        }
-    })
-    .exec(function (err,posts) {
-        if(err){
-            console.log(`${err} while fetching posts`);
-            return;
-        }
-        User.find({},function (err,user) {
+    try {
+        
+        let posts = await Post.find({})
+        .populate('user')
+        .populate({path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        });
 
-            return res.render('home', {
-                title: "Code'n Chat",
-                posts: posts,
-                all_users: user
-            });
-        })
-
-    })
+        let users = await User.find({});
+        
+        return res.render('home', {
+            title: "Code'n Chat",
+            posts: posts,
+            all_users: users
+        });
+    } catch (error) {
+        console.log(`${error}`);
+        return;
+    }
 }
