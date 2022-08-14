@@ -85,6 +85,7 @@ module.exports.create_id = function (req,res) {
 
 // signin and create a session
 module.exports.createSession = function (req,res) {
+    req.flash('sucess', 'Logged in Sucessfully');
     return res.redirect('/');
 }
 
@@ -93,6 +94,7 @@ module.exports.signOut = function (req,res) {
         if(err){
             console.log(`${err} while logging out`);
         }
+        req.flash('sucess', 'Logged out Sucessfully');
         return res.redirect('/');
     });
 }
