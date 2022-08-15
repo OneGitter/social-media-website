@@ -17,11 +17,13 @@ module.exports.create = async function (req,res) {
             
             post.comments.push(comment);
             post.save();
+            let user = await User.findById(comment.user);
             if(req.xhr){
                 return res.status(200).json({
                     data: {
                         comment: comment,
-                        post_id: req.body.post
+                        post_id: req.body.post,
+                        user_name: user.name
                     },
                     message: 'comment created'
                 });
@@ -50,7 +52,7 @@ module.exports.destroy = async function (req,res) {
             if(req.xhr){
                 return res.status(200).json({
                     data: {
-                        post_id: req.params.id
+                        post_id: req.params.id,
                     },
                     message: 'comment deleted'
                 });

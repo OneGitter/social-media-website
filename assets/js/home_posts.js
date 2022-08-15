@@ -106,7 +106,7 @@
                 data: newCommentForm.serialize(),
                 success: function(data){
                     console.log(data);
-                    let newComment = newCommentDom(data.data.comment);
+                    let newComment = newCommentDom(data.data);
                     $(`#post-comments-${data.data.post_id}`).prepend(newComment);
                     new Noty({
                         theme : 'relax' , 
@@ -125,16 +125,16 @@
     }
 
     // method to create a comment in DOM
-    let newCommentDom = function(comment){
-        return $(`<li id="comment-${comment._id}">
+    let newCommentDom = function(data){
+        return $(`<li id="comment-${data.comment._id}">
             <small>
-                <a class="delete-comment-button" href="/comments/delete/${comment._id}">X</a>
+                <a class="delete-comment-button" href="/comments/delete/${data.comment._id}">X</a>
             </small>
         <p>
-            ${comment.content}
+            ${data.comment.content}
             <br>
             <small>
-                ${comment.user.name}
+                ${data.user_name}
             </small>
         </p>
     </li>`)
