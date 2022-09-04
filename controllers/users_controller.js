@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const fs = require('fs');
+const path = require('path');
 
 
 module.exports.profile = async function (req,res) {
@@ -18,10 +20,25 @@ module.exports.profile = async function (req,res) {
 module.exports.update = async function (req,res) {
     try {
         if(req.user.id == req.params.id){
-            await User.findByIdAndUpdate(req.params.id,{
-                name: req.body.name,
-                email: req.body.email
-            });
+            let user = await User.findById(req.params.id);
+
+            User.uploadedAvatar(req,res,function (err) {
+                user.name = req.body.name;
+                user.email = req.body.email;
+
+                if(req.file){
+
+                    if(user.avatar){
+                        if(fs.access(path.join(__dirname,'..' + user.avatar))){
+                            fs.unlinkSync(path.join(__dirname,'..' + user.avatar));
+                        }
+                    }
+
+                    user.avatar = User.avatarPath + '/' + req.file.filename
+                }
+                user.save();
+            })
+
             return res.redirect('back');
         }
         else{
@@ -85,7 +102,7 @@ module.exports.create_id = function (req,res) {
 
 // signin and create a session
 module.exports.createSession = function (req,res) {
-    req.flash('sucess', 'Logged in Sucessfully');
+    req.flash('success', 'Logged in Sucessfully');
     return res.redirect('/');
 }
 
@@ -94,7 +111,7 @@ module.exports.signOut = function (req,res) {
         if(err){
             console.log(`${err} while logging out`);
         }
-        req.flash('sucess', 'Logged out Sucessfully');
+        req.flash('success', 'Logged out Sucessfully');
         return res.redirect('/');
     });
 }

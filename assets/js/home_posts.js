@@ -116,7 +116,7 @@
                         timeout : 1500
                         
                         }).show();
-                    deleteComment($(' .delete-comment-button', newComment));
+                    deleteComment($(' #delete-comment-button', newComment));
                 }, error: function(error){
                     console.log(error.responseText);
                 }
@@ -128,7 +128,7 @@
     let newCommentDom = function(data){
         return $(`<li id="comment-${data.comment._id}">
             <small>
-                <a class="delete-comment-button" href="/comments/delete/${data.comment._id}">X</a>
+                <a id="delete-comment-button" href="/comments/delete/${data.comment._id}">X</a>
             </small>
         <p>
             ${data.comment.content}
@@ -140,7 +140,7 @@
     </li>`)
     }
 
-    // method to delete a post from DOM
+    // method to delete a comment from DOM
     let deleteComment = function(deleteLink){
         $(deleteLink).click(function(e){
             e.preventDefault();
