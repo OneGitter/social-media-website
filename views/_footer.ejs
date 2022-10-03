@@ -1,19 +1,22 @@
-<footer>
+<footer id="layout-footer">
     <div>
-        ©   Mohammed Naseeruddin. All Rights Reserved 
+        <p>
+            &#169;  Mohammed Naseeruddin. All Rights Reserved 
+        </p>
     </div>
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <% if (locals.user) { %>
-        <li>
-            <a href="/users/profile/<%= user.id %>">Profile</a>
-        </li>
-        <% } else{ %>
-            <li>
-                <a href="/users/sign-in">Sign In</a>
-            </li>
-        <% } %>      
-    </ul>
+    
+    <div>
+        <nav class="footer-nav">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <% if (locals.user) { %>
+                    <li>
+                        <a href="/users/profile/<%= user.id %>">Profile</a>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
 </footer>

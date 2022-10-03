@@ -1,29 +1,22 @@
-footer{
+#layout-footer{
+    color: white;
+    a{
+        color: white;
+        text-decoration: none;
+    }
+
+    background: grey;
+    padding: 5px 10px;
     display: flex;
     justify-content: flex-start;
-    background-color: #747474;
-    color: white;
-    font-size: large;
-    div{
-        padding-top: 2%;
-        font-size: larger;
-        margin-right: -20px;  
-    }
-    ul{
-        list-style-type: none; 
-        li{
-          display: inline-block;
-          font-size: larger;
-          padding-top: 1%;
-          margin-top: -3px;
-          margin-right: 10px;
-          :hover {
-            color: darkblue;
-          }
-          a{
-            text-decoration: none;
-            color: white;
-          }
+
+    .footer-nav{
+        ul{
+            list-style: none;
+            display: flex;
+            li{
+                margin-right: 10px;
+            }
         }
     }
 }

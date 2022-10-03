@@ -1,42 +1,29 @@
-header {
+#layout-header nav {
   display: flex;
   justify-content: space-between;
-  background-color: #1186f0;
+  padding: 0 10px;
+  background: #2196f3;
   color: white;
-  font-size: large;
+  box-shadow: 1px 1px 1px 1px lightgrey;
 }
 
-header div {
-  margin-top: 17px;
-  font-size: x-large;
+#layout-header nav .mini-logo p {
+  margin: 5px;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
-header div :hover {
-  color: darkblue;
+#layout-header nav .auth-links ul {
+  margin: 5% 5px;
+  display: flex;
+  list-style: none;
 }
 
-header div a {
-  text-decoration: none;
+#layout-header nav .auth-links ul li {
+  margin-right: 10px;
+}
+
+#layout-header nav a {
   color: white;
-}
-
-header ul {
-  list-style-type: none;
-}
-
-header ul li {
-  display: inline-block;
-  font-size: larger;
-  padding-top: 2px;
-  margin-right: 5px;
-}
-
-header ul li :hover {
-  color: darkblue;
-}
-
-header ul li a {
   text-decoration: none;
-  color: white;
 }

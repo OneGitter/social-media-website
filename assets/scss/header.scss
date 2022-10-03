@@ -1,35 +1,35 @@
-header{
-    display: flex;
-    justify-content: space-between;
-    background-color: #1186f0;
-    color: white;
-    font-size: large;
-    div{
-      margin-top: 17px;
-      font-size: x-large;
-      font-weight: bold;
-      :hover{
-        color: darkblue;
-      }
-      a{
-        text-decoration: none;
+#layout-header{
+    nav{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        background: #2196f3;
         color: white;
-      }
-    }
-    ul{
-        list-style-type: none; 
-        li{
-          display: inline-block;
-          font-size: larger;
-          padding-top: 2px;
-          margin-right: 5px;
-          :hover {
-            color: darkblue;
-          }
-          a{
-            text-decoration: none;
-            color: white;
-          }
+        box-shadow: 1px 1px 1px 1px lightgrey;
+
+        .mini-logo{
+            p{
+                margin: 5px;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
         }
+
+        .auth-links{
+            ul{
+                margin: 5% 5px;
+                display: flex;
+                list-style: none;
+                li{
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+
     }
 }

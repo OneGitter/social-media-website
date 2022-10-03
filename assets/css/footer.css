@@ -1,34 +1,21 @@
-footer {
+#layout-footer {
+  color: white;
+  background: grey;
+  padding: 5px 10px;
   display: flex;
   justify-content: flex-start;
-  background-color: #747474;
+}
+
+#layout-footer a {
   color: white;
-  font-size: large;
-}
-
-footer div {
-  padding-top: 2%;
-  font-size: larger;
-  margin-right: -20px;
-}
-
-footer ul {
-  list-style-type: none;
-}
-
-footer ul li {
-  display: inline-block;
-  font-size: larger;
-  padding-top: 1%;
-  margin-top: -3px;
-  margin-right: 10px;
-}
-
-footer ul li :hover {
-  color: darkblue;
-}
-
-footer ul li a {
   text-decoration: none;
-  color: white;
+}
+
+#layout-footer .footer-nav ul {
+  list-style: none;
+  display: flex;
+}
+
+#layout-footer .footer-nav ul li {
+  margin-right: 10px;
 }
