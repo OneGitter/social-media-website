@@ -102,8 +102,13 @@ module.exports.create_id = function (req,res) {
 
 // signin and create a session
 module.exports.createSession = function (req,res) {
-    req.flash('success', 'Logged in Sucessfully');
-    return res.redirect('/');
+    try {
+        req.flash('success', 'Logged in Sucessfully');
+        
+        return res.redirect('/');
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports.signOut = function (req,res) {
