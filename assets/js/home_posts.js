@@ -93,80 +93,18 @@
         });
     }
 
-    // method to submit the form data for new comment using AJAX
-    let createComment = function(){
-        let newCommentForm = $('#new-comment-form');
+    let convertPostsToAjax = function(){
+        $('#posts-list-container>ul>li').each(function(){
+            let self = $(this);
+            let deleteButton = $(' .delete-post-button', self);
+            deletePost(deleteButton);
 
-        newCommentForm.submit(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                type: 'post',
-                url: '/comments/create',
-                data: newCommentForm.serialize(),
-                success: function(data){
-                    console.log(data);
-                    let newComment = newCommentDom(data.data);
-                    $(`#post-comments-${data.data.post_id}`).prepend(newComment);
-                    new Noty({
-                        theme : 'relax' , 
-                        text: "Comment Created",
-                        type: 'sucess',
-                        layout : "topCenter",
-                        timeout : 1500
-                        
-                        }).show();
-                    deleteComment($(' #delete-comment-button', newComment));
-                }, error: function(error){
-                    console.log(error.responseText);
-                }
-            });
+            // get the post's id by splitting the id attribute
+            let postId = self.prop('id').split("-")[1]
+            new PostComments(postId);
         });
     }
-
-    // method to create a comment in DOM
-    let newCommentDom = function(data){
-        return $(`<li id="comment-${data.comment._id}">
-            <small>
-                <a id="delete-comment-button" href="/comments/delete/${data.comment._id}">X</a>
-            </small>
-        <p>
-            ${data.comment.content}
-            <br>
-            <small>
-                ${data.user_name}
-            </small>
-        </p>
-    </li>`)
-    }
-
-    // method to delete a comment from DOM
-    let deleteComment = function(deleteLink){
-        $(deleteLink).click(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                type: 'get',
-                url: $(deleteLink).prop('href'),
-                success: function(data){
-                    $(`#comment-${data.data.post_id}`).remove();
-                    new Noty({
-                        theme : 'relax' , 
-                        text: "Comment Deleted",
-                        type: 'sucess',
-                        layout : "topCenter",
-                        timeout : 1500
-                        
-                        }).show();
-                },error: function(error){
-                    console.log(error.responseText);
-                }
-            });
-
-        });
-    }
-
 
     createPost();
-    createComment();
+    convertPostsToAjax();
 }
