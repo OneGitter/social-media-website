@@ -43,7 +43,7 @@
                         ${ data.post.content }
                         <br>
                         <small>
-                        ${ data.user_name }
+                        ${ data.post.user.name }
                         </small>
                     </p>
                     <div class="post-comments">
