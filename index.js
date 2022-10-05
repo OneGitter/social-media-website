@@ -5,6 +5,11 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 
+
+//for kue gui
+const kue = require('kue');
+
+
 // used for session cookie and authentication
 const session = require('express-session');
 const passport = require('passport');
@@ -89,3 +94,5 @@ app.listen(port, function(err){
 
     console.log(`Server is running on port: ${port}`);
 });
+
+kue.app.listen(3000);
