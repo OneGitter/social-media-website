@@ -3,6 +3,7 @@ const Post = require('../models/post');
 const commentsMailer = require('../mailers/comments_mailer');
 const commentEmailWorker = require('../workers/comment_email_worker');
 const queue = require('../config/kue');
+const Like = require('../models/like');
 
 module.exports.create = async function (req,res) {
     try{
@@ -18,7 +19,7 @@ module.exports.create = async function (req,res) {
             post.comments.push(comment);
             post.save();
             
-            comment = await comment.populate('user');
+            comment = await comment.populate('user','name');
             console.log(comment);
             // Uncomment while hosting
             // commentsMailer.newComment(comment);
@@ -66,6 +67,8 @@ module.exports.destroy = async function(req, res){
             comment.remove();
 
             let post = Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}});
+
+            await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
 
             // send the comment id which was deleted back to the views
             if (req.xhr){
