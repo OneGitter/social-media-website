@@ -12,7 +12,6 @@ module.exports.create = async function (req,res) {
         if(req.xhr){
             post = await post.populate('user','name');
             // console.log(post);
-            console.log('inside controller');
 
             return res.status(200).json({
                 data: {
@@ -57,8 +56,12 @@ module.exports.destroy = async function (req,res) {
 
             
         req.flash('sucess','post and associated comments deleted');
-        }
         return res.redirect('back');
+        }
+        else{
+            req.flash('error', 'You cannot delete this post!');
+            return res.redirect('back');
+        }
     } catch (error) {
         req.flash('error',error);
         return;

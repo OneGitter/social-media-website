@@ -24,6 +24,7 @@ module.exports.create = async function (req,res) {
             // Uncomment while hosting
             // commentsMailer.newComment(comment);
 
+            // change email to emails before deployment
             let job = queue.create('email',comment).save(function(err){
                 if(err){
                     console.log('Error in adding job to queue',err);

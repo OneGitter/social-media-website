@@ -93,7 +93,7 @@
                     new Noty({
                         theme : 'relax' , 
                         text: "Post Deleted",
-                        type: 'sucess',
+                        type: 'success',
                         layout : "topCenter",
                         timeout : 1500
                         
