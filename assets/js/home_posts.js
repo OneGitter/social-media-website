@@ -11,8 +11,6 @@
                 url: '/posts/create',
                 data: newPostForm.serialize(),
                 success: function(data){
-                    console.log(data);
-                    console.log('Inside ajax');
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
@@ -39,7 +37,7 @@
 
 
     // method to create a post in DOM
-    let newPostDom = function(data){
+    let newPostDom = function(post){
         return $(`<li id="post-${post._id}">
                     <p>
                         
