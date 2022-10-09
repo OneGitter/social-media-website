@@ -5,6 +5,16 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 
+// environment file
+const env = require('./config/environment');
+// console.log(env.name);
+
+// for logging 
+const logger = require('morgan');
+
+// for path 
+const path = require('path');
+
 
 //for kue gui
 const kue = require('kue');
@@ -28,13 +38,15 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
-app.use(sassMiddleware({
-    src:'./assets/scss',
-    dest: './assets/css',
-    debug: true,
-    outputStyle: 'expanded',
-    prefix: '/css'
-}))
+if(env.name == 'development'){
+    app.use(sassMiddleware({
+        src: path.join(__dirname,env.asset_path,'scss'),
+        dest: path.join(__dirname,env.asset_path,'css'),
+        debug: true,
+        outputStyle: 'expanded',
+        prefix: '/css'
+    }))
+}
 
 
 app.use(express.urlencoded({extended:false}));
@@ -43,10 +55,14 @@ app.use(cookieParser());
 
 
 // use static files
-app.use(express.static('./assets'));
+app.use(express.static(`.${env.asset_path}`));
 
 // make the uploads path available to browser
 app.use('/uploads', express.static(__dirname +'/uploads'));
+
+// logging events
+app.use(logger(env.morgan.mode,env.morgan.options))
+require('./config/view-helpers')(app);
 
 //extract styles and scripts from sub pages into layout
 app.set('layout extractStyles',true);
@@ -64,7 +80,7 @@ app.set('views','./views');
 app.use(session({
     name:'chatncode',
     //TODO change the secret b4 deployment
-    secret: 'secret',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {

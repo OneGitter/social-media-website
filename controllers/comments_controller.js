@@ -19,8 +19,8 @@ module.exports.create = async function (req,res) {
             post.comments.push(comment);
             post.save();
             
-            comment = await comment.populate('user','name');
-            console.log(comment);
+            comment = await comment.populate('user',{name: 1,email:1});
+            // console.log(comment);
             // Uncomment while hosting
             // commentsMailer.newComment(comment);
 
