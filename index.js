@@ -8,6 +8,13 @@ const db = require('./config/mongoose');
 
 //for kue gui
 const kue = require('kue');
+kue.app.listen(3000);
+
+//for websockets
+const chatServer = require('http').Server(app);
+const chatSocket = require('./config/chat_socket').chatSockets(chatServer);
+chatServer.listen(5000);
+
 
 
 // used for session cookie and authentication
@@ -95,4 +102,3 @@ app.listen(port, function(err){
     console.log(`Server is running on port: ${port}`);
 });
 
-kue.app.listen(3000);
