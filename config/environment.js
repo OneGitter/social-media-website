@@ -20,7 +20,7 @@ const development = {
     smtp: {
         service: 'gmail',
         host: 'smtp.gmail.com',
-        port: 587,
+        port: 465,
         secure: false,
         auth: {
             user: 'mnu202001@gmail.com',
@@ -48,7 +48,7 @@ const production = {
     smtp: {
         service: 'gmail',
         host: 'smtp.gmail.com',
-        port: 587,
+        port: 465,
         secure: false,
         auth: {
             user: process.env.codenchat_smtp_user,
