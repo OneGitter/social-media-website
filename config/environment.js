@@ -29,7 +29,7 @@ const development = {
     },
     google_client_id: "1075885633654-uu0nu4vm0nid5jno6qsphtatdj4d1k5a.apps.googleusercontent.com",
     google_client_secret: "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",
-    google_callback_url: "http://localhost:8000/users/auth/google/callback",
+    google_callback_url: "http://codenchat.live/users/auth/google/callback",
     jwt_key: 'codenchat',
     morgan: {
         mode: 'dev',
