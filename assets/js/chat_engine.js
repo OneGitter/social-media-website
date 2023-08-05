@@ -3,7 +3,7 @@ class ChatEngine{
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
 
-        this.socket = io.connect('http://13.233.21.3:5000', { transports: ['websocket', 'polling', 'flashsocket'] });
+        this.socket = io.connect('https://codenchat.live:5000', { transports: ['websocket', 'polling', 'flashsocket'] });
 
         if(this.userEmail){
             this.connectionHandler();
